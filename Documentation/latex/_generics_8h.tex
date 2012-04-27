@@ -1,0 +1,408 @@
+\hypertarget{_generics_8h}{\section{Generics.\-h File Reference}
+\label{_generics_8h}\index{Generics.\-h@{Generics.\-h}}
+}
+
+
+has Haskelly goodness for all! All code examples come from Haskell's Prelude module.  
+
+
+{\ttfamily \#import $<$Foundation/\-Foundation.\-h$>$}\\*
+{\ttfamily \#import $<$Generics/\-N\-S\-Array+\-Generics.\-h$>$}\\*
+{\ttfamily \#import $<$Generics/\-N\-S\-Dictionary+\-Generics.\-h$>$}\\*
+{\ttfamily \#import $<$Generics/\-N\-S\-Dictionary+\-Morphism.\-h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+N\-S\-Array $\ast$ \hyperlink{_generics_8h_af67111c10dac3801a9fd3865e2692ee6}{map} (id($^\wedge$function)(id x), N\-S\-Array $\ast$preimage)
+\begin{DoxyCompactList}\small\item\em A generic map function. \end{DoxyCompactList}\item 
+N\-S\-Array $\ast$ \hyperlink{_generics_8h_a41dfdc2943f17a6e8b22873b13f3a661}{map\-With\-Selector} (S\-E\-L selector, N\-S\-Array $\ast$preimage)
+\begin{DoxyCompactList}\small\item\em A generic-\/ish map function. \end{DoxyCompactList}\item 
+N\-S\-Array $\ast$ \hyperlink{_generics_8h_a5a6771307289be1481eee31efde8b5f6}{map\-Tuples} (N\-S\-Array $\ast$functions\-Tuple, N\-S\-Array $\ast$tuples)
+\begin{DoxyCompactList}\small\item\em Matrix multiplication from the left using a row vector of functions, using cons instead of plus and function application as multiplication. \end{DoxyCompactList}\item 
+N\-S\-Array $\ast$ \hyperlink{_generics_8h_a01f5bcd022752653d4e855788121c88a}{map\-Tuples\-With\-Selector} (S\-E\-L $\ast$selectors\-Tuple, N\-S\-Array $\ast$tuples)
+\begin{DoxyCompactList}\small\item\em Same as map\-Tuples but using a C array of selectors instead of an N\-S\-Array of blocks. \end{DoxyCompactList}\item 
+N\-S\-Array $\ast$ \hyperlink{_generics_8h_af2b68e3de43d9f823cf7300c63a07624}{filter} (bool($^\wedge$predicate)(id x), N\-S\-Array $\ast$feed)
+\begin{DoxyCompactList}\small\item\em A generic filter function. \end{DoxyCompactList}\item 
+id \hyperlink{_generics_8h_a9c2c6450dd3cfe8b9d2aaadd3bf3544b}{foldl} (id($^\wedge$function)(id lhs, id rhs), id zero, N\-S\-Array $\ast$list)
+\begin{DoxyCompactList}\small\item\em A generic foldl function. \end{DoxyCompactList}\item 
+id \hyperlink{_generics_8h_ad715313e76fce6db25ab8e4a105f5e10}{foldr} (id($^\wedge$function)(id lhs, id rhs), id zero, N\-S\-Array $\ast$list)
+\begin{DoxyCompactList}\small\item\em A generic foldr function. \end{DoxyCompactList}\item 
+id \hyperlink{_generics_8h_a223119a33050c1e233e7d7239692e11a}{foldl1} (id($^\wedge$function)(id lhs, id rhs), N\-S\-Array $\ast$nonempty\-List)
+\begin{DoxyCompactList}\small\item\em A generic foldl1 function. \end{DoxyCompactList}\item 
+id \hyperlink{_generics_8h_a4b6fe20f1cfcfc6b73fd579e42cc546d}{foldr1} (id($^\wedge$function)(id lhs, id rhs), N\-S\-Array $\ast$nonempty\-List)
+\begin{DoxyCompactList}\small\item\em A generic foldr1 function. \end{DoxyCompactList}\item 
+N\-S\-Array $\ast$ \hyperlink{_generics_8h_a90be7fdd6620a330bca7da0a6100a811}{zip} (N\-S\-Array $\ast$lhs\-List, N\-S\-Array $\ast$rhs\-List)
+\begin{DoxyCompactList}\small\item\em A generic zip function. \end{DoxyCompactList}\item 
+N\-S\-Array $\ast$ \hyperlink{_generics_8h_ae7127ae29c830f646bc9ea3863776fa6}{zip\-With} (id($^\wedge$zipper)(id lhs, id rhs), N\-S\-Array $\ast$lhs\-List, N\-S\-Array $\ast$rhs\-List)
+\begin{DoxyCompactList}\small\item\em A generic zip\-With function. \end{DoxyCompactList}\item 
+N\-S\-Array $\ast$ \hyperlink{_generics_8h_af1b2a3f7da1e25e04756396d4ffdc3d9}{unzip} (N\-S\-Array $\ast$pairs)
+\begin{DoxyCompactList}\small\item\em A generic unzip function. \end{DoxyCompactList}\item 
+N\-S\-Array $\ast$ \hyperlink{_generics_8h_a7f53c521d770d7039c577fbd9300797b}{flatten} (N\-S\-Array $\ast$arrays)
+\begin{DoxyCompactList}\small\item\em A generic flatten function. \end{DoxyCompactList}\item 
+\hypertarget{_generics_8h_a695de152adb86747ad6630e327d92995}{N\-S\-Dictionary $\ast$ \hyperlink{_generics_8h_a695de152adb86747ad6630e327d92995}{inverse\-Image\-Arrays\-By\-Projection\-With\-Block} (N\-S\-Array $\ast$array, id($^\wedge$projection\-Block)(id))}\label{_generics_8h_a695de152adb86747ad6630e327d92995}
+
+\begin{DoxyCompactList}\small\item\em A function which takes an array of objects and returns a dictionary whose keys are the results of applying projection\-Block to the objects in the array and whose objects are the lists of objects from the original array with the same projection, in the order in which they came from the original array. \end{DoxyCompactList}\item 
+\hypertarget{_generics_8h_a788ba4f071db729e24e98832c4ec59ff}{N\-S\-Dictionary $\ast$ \hyperlink{_generics_8h_a788ba4f071db729e24e98832c4ec59ff}{inverse\-Image\-Arrays\-By\-Projection\-With\-Selector} (N\-S\-Array $\ast$array, S\-E\-L projection\-Selector)}\label{_generics_8h_a788ba4f071db729e24e98832c4ec59ff}
+
+\begin{DoxyCompactList}\small\item\em A function which takes an array of objects and returns a dictionary whose keys are the results of sending projection\-Selector to the objects in the array and whose objects are the lists of objects from the original array with the same projection, in the order in which they came from the original array. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{_generics_8h_aa39f6e878780617130104cd73b9cbd6d}{id($^\wedge$ \hyperlink{_generics_8h_aa39f6e878780617130104cd73b9cbd6d}{id\-\_\-function} )(id)}\label{_generics_8h_aa39f6e878780617130104cd73b9cbd6d}
+
+\begin{DoxyCompactList}\small\item\em id function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+has Haskelly goodness for all! All code examples come from Haskell's Prelude module. 
+
+\subsection{Function Documentation}
+\hypertarget{_generics_8h_af2b68e3de43d9f823cf7300c63a07624}{\index{Generics.\-h@{Generics.\-h}!filter@{filter}}
+\index{filter@{filter}!Generics.h@{Generics.\-h}}
+\subsubsection[{filter}]{\setlength{\rightskip}{0pt plus 5cm}N\-S\-Array$\ast$ {\bf filter} (
+\begin{DoxyParamCaption}
+\item[{bool($^\wedge$)(id x)}]{predicate, }
+\item[{N\-S\-Array $\ast$}]{feed}
+\end{DoxyParamCaption}
+)}}\label{_generics_8h_af2b68e3de43d9f823cf7300c63a07624}
+
+
+A generic filter function. 
+
+\begin{DoxyVerb}   filter takes a predicate (bool typed function of a single argument of variable type using blocks) and a list (NSArray*).
+   It returns the elements of the list, in order, which satisfy the predicate.
+
+   In Haskell:
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}
+        filter :: (a -> Bool) -> [a] -> [a]
+        filter p []                 = []
+        filter p (x:xs) | p x       = x : filter p xs
+                                        | otherwise = filter p xs
+\end{DoxyCode}
+ 
+\begin{DoxyParams}{Parameters}
+{\em predicate} & the predicate as a bool typed function of a single argument of variable type using blocks. \\
+\hline
+{\em feed} & the feed as an N\-S\-Array$\ast$. \\
+\hline
+\end{DoxyParams}
+\hypertarget{_generics_8h_a7f53c521d770d7039c577fbd9300797b}{\index{Generics.\-h@{Generics.\-h}!flatten@{flatten}}
+\index{flatten@{flatten}!Generics.h@{Generics.\-h}}
+\subsubsection[{flatten}]{\setlength{\rightskip}{0pt plus 5cm}N\-S\-Array$\ast$ {\bf flatten} (
+\begin{DoxyParamCaption}
+\item[{N\-S\-Array $\ast$}]{arrays}
+\end{DoxyParamCaption}
+)}}\label{_generics_8h_a7f53c521d770d7039c577fbd9300797b}
+
+
+A generic flatten function. 
+
+flatten takes a list of lists (of lists...) and removes the (outermost layer of) inner square brackets. \hypertarget{_generics_8h_a9c2c6450dd3cfe8b9d2aaadd3bf3544b}{\index{Generics.\-h@{Generics.\-h}!foldl@{foldl}}
+\index{foldl@{foldl}!Generics.h@{Generics.\-h}}
+\subsubsection[{foldl}]{\setlength{\rightskip}{0pt plus 5cm}id {\bf foldl} (
+\begin{DoxyParamCaption}
+\item[{id($^\wedge$)(id lhs, id rhs)}]{function, }
+\item[{id}]{zero, }
+\item[{N\-S\-Array $\ast$}]{list}
+\end{DoxyParamCaption}
+)}}\label{_generics_8h_a9c2c6450dd3cfe8b9d2aaadd3bf3544b}
+
+
+A generic foldl function. 
+
+\begin{DoxyVerb}   foldl takes, as arguments, a function (variably typed function of two arguments of variable type using blocks), a (metaphorically) zero value (id), and an list (NSArray*).
+   If the list is empty, it returns the zero value.
+   Otherwise, it applies foldl to the function, the result of applying the function to the zero value (on the left) and the head of the list (on the right), and the tail of the list.
+
+   In Haskell:
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}
+        foldl            :: (a -> b -> a) -> a -> [b] -> a
+        foldl f z []     =  z
+        foldl f z (x:xs) =  foldl f (f z x) xs
+\end{DoxyCode}
+ 
+\begin{DoxyParams}{Parameters}
+{\em function} & the functional argument as a variably typed function of two arguments of variable type using blocks. \\
+\hline
+{\em zero} & the zero. \\
+\hline
+{\em list} & the list as an N\-S\-Array$\ast$. \\
+\hline
+\end{DoxyParams}
+\hypertarget{_generics_8h_a223119a33050c1e233e7d7239692e11a}{\index{Generics.\-h@{Generics.\-h}!foldl1@{foldl1}}
+\index{foldl1@{foldl1}!Generics.h@{Generics.\-h}}
+\subsubsection[{foldl1}]{\setlength{\rightskip}{0pt plus 5cm}id {\bf foldl1} (
+\begin{DoxyParamCaption}
+\item[{id($^\wedge$)(id lhs, id rhs)}]{function, }
+\item[{N\-S\-Array $\ast$}]{nonempty\-List}
+\end{DoxyParamCaption}
+)}}\label{_generics_8h_a223119a33050c1e233e7d7239692e11a}
+
+
+A generic foldl1 function. 
+
+\begin{DoxyVerb}   foldl1 takes, as arguments, a function (variably typed function of two arguments of variable type using blocks), and a nonempty list (NSArray*).
+   It returns the result of applying foldl to the function, the head of the list, and the tail of the list.
+
+   In Haskell:
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}
+        foldl1           :: (a -> a -> a) -> [a] -> a
+        foldl1 f (x:xs)  =  foldl f x xs
+        foldl1 _ []      =  error "Prelude.foldl1: empty list"
+\end{DoxyCode}
+ 
+\begin{DoxyParams}{Parameters}
+{\em function} & the functional argument as a variably typed function of two arguments of variable type using blocks. \\
+\hline
+{\em nonempty\-List} & the nonempty list as an N\-S\-Array$\ast$. \\
+\hline
+\end{DoxyParams}
+\hypertarget{_generics_8h_ad715313e76fce6db25ab8e4a105f5e10}{\index{Generics.\-h@{Generics.\-h}!foldr@{foldr}}
+\index{foldr@{foldr}!Generics.h@{Generics.\-h}}
+\subsubsection[{foldr}]{\setlength{\rightskip}{0pt plus 5cm}id {\bf foldr} (
+\begin{DoxyParamCaption}
+\item[{id($^\wedge$)(id lhs, id rhs)}]{function, }
+\item[{id}]{zero, }
+\item[{N\-S\-Array $\ast$}]{list}
+\end{DoxyParamCaption}
+)}}\label{_generics_8h_ad715313e76fce6db25ab8e4a105f5e10}
+
+
+A generic foldr function. 
+
+\begin{DoxyVerb}   foldr takes, as arguments, a function (variably typed function of two arguments of variable type using blocks), a zero value (id), and a list (NSArray*).
+   If the list is empty, it returns the zero value.
+   Otherwise, it returns result of applying the function to the head of the list (on the left) and the result of applying foldr to the function, the zero value, and the tail of the list.
+
+   In Haskell:
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}
+        foldr            :: (a -> b -> b) -> b -> [a] -> b
+        foldr f z []     =  z
+        foldr f z (x:xs) =  f x (foldr f z xs)
+\end{DoxyCode}
+ 
+\begin{DoxyParams}{Parameters}
+{\em function} & the functional argument as a variably typed function of two arguments of variable type using blocks. \\
+\hline
+{\em zero} & the zero. \\
+\hline
+{\em list} & the list as an N\-S\-Array$\ast$. \\
+\hline
+\end{DoxyParams}
+\hypertarget{_generics_8h_a4b6fe20f1cfcfc6b73fd579e42cc546d}{\index{Generics.\-h@{Generics.\-h}!foldr1@{foldr1}}
+\index{foldr1@{foldr1}!Generics.h@{Generics.\-h}}
+\subsubsection[{foldr1}]{\setlength{\rightskip}{0pt plus 5cm}id {\bf foldr1} (
+\begin{DoxyParamCaption}
+\item[{id($^\wedge$)(id lhs, id rhs)}]{function, }
+\item[{N\-S\-Array $\ast$}]{nonempty\-List}
+\end{DoxyParamCaption}
+)}}\label{_generics_8h_a4b6fe20f1cfcfc6b73fd579e42cc546d}
+
+
+A generic foldr1 function. 
+
+\begin{DoxyVerb}   foldr1 takes, as arguments, a function (variably typed function of two arguments of variable type using blocks), and a nonempty list (NSArray*).
+   If the nonempty list is of length one, it returns the single item in the list.
+   Otherwise it returns the result of applying the function to the head of the list and the result of applying foldr1 to the function and the tail of the list.
+
+   In Haskell:
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}
+        foldr1           :: (a -> a -> a) -> [a] -> a
+        foldr1 f [x]     =  x
+        foldr1 f (x:xs)  =  f x (foldr1 f xs)
+        foldr1 _ []      =  error "Prelude.foldr1: empty list"
+\end{DoxyCode}
+ 
+\begin{DoxyParams}{Parameters}
+{\em function} & the functional argument as a variably typed function of two arguments of variable type using blocks. \\
+\hline
+{\em nonempty\-List} & the nonempty list as an N\-S\-Array$\ast$. \\
+\hline
+\end{DoxyParams}
+\hypertarget{_generics_8h_af67111c10dac3801a9fd3865e2692ee6}{\index{Generics.\-h@{Generics.\-h}!map@{map}}
+\index{map@{map}!Generics.h@{Generics.\-h}}
+\subsubsection[{map}]{\setlength{\rightskip}{0pt plus 5cm}N\-S\-Array$\ast$ {\bf map} (
+\begin{DoxyParamCaption}
+\item[{id($^\wedge$)(id x)}]{function, }
+\item[{N\-S\-Array $\ast$}]{preimage}
+\end{DoxyParamCaption}
+)}}\label{_generics_8h_af67111c10dac3801a9fd3865e2692ee6}
+
+
+A generic map function. 
+
+\begin{DoxyVerb}   map takes, as arguments, a function (variably typed function of a single argument of variable type using blocks) and an preimage list (NSArray*).
+   It returns an image list containing the images of the elements of the original list under the function.
+
+   In Haskell:
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}
+        map :: (a -> b) -> [a] -> [b]
+        map f []     = []
+        map f (x:xs) = f x : map f xs
+\end{DoxyCode}
+ 
+\begin{DoxyParams}{Parameters}
+{\em function} & the functional argument as a variably typed function of a single argument of variable type using blocks. \\
+\hline
+{\em preimage} & the preimage as an N\-S\-Array$\ast$. \\
+\hline
+\end{DoxyParams}
+\hypertarget{_generics_8h_a5a6771307289be1481eee31efde8b5f6}{\index{Generics.\-h@{Generics.\-h}!map\-Tuples@{map\-Tuples}}
+\index{map\-Tuples@{map\-Tuples}!Generics.h@{Generics.\-h}}
+\subsubsection[{map\-Tuples}]{\setlength{\rightskip}{0pt plus 5cm}N\-S\-Array$\ast$ {\bf map\-Tuples} (
+\begin{DoxyParamCaption}
+\item[{N\-S\-Array $\ast$}]{functions\-Tuple, }
+\item[{N\-S\-Array $\ast$}]{tuples}
+\end{DoxyParamCaption}
+)}}\label{_generics_8h_a5a6771307289be1481eee31efde8b5f6}
+
+
+Matrix multiplication from the left using a row vector of functions, using cons instead of plus and function application as multiplication. 
+
+map\-Tuples takes an n-\/tuple of functions (N\-S\-Array$\ast$) and a list of n-\/tuples (N\-S\-Array$\ast$) and performs matrix multiplication treating the functions tuple as a row vector
+
+
+\begin{DoxyParams}{Parameters}
+{\em functions\-Tuple} & the n-\/tuple of functions as an N\-S\-Array$\ast$ of blocks. \\
+\hline
+{\em tuples} & the list of n-\/tuple arguments to the functions as an N\-S\-Array$\ast$ of N\-S\-Array$\ast$s. \\
+\hline
+\end{DoxyParams}
+\hypertarget{_generics_8h_a01f5bcd022752653d4e855788121c88a}{\index{Generics.\-h@{Generics.\-h}!map\-Tuples\-With\-Selector@{map\-Tuples\-With\-Selector}}
+\index{map\-Tuples\-With\-Selector@{map\-Tuples\-With\-Selector}!Generics.h@{Generics.\-h}}
+\subsubsection[{map\-Tuples\-With\-Selector}]{\setlength{\rightskip}{0pt plus 5cm}N\-S\-Array$\ast$ {\bf map\-Tuples\-With\-Selector} (
+\begin{DoxyParamCaption}
+\item[{S\-E\-L $\ast$}]{selectors\-Tuple, }
+\item[{N\-S\-Array $\ast$}]{tuples}
+\end{DoxyParamCaption}
+)}}\label{_generics_8h_a01f5bcd022752653d4e855788121c88a}
+
+
+Same as map\-Tuples but using a C array of selectors instead of an N\-S\-Array of blocks. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em selectors\-Tuple} & the n-\/tuple of functions as a C array of selectors. \\
+\hline
+{\em tuples} & the list of n-\/tuple arguments to the functions as an N\-S\-Array$\ast$ of N\-S\-Array$\ast$s. \\
+\hline
+\end{DoxyParams}
+\hypertarget{_generics_8h_a41dfdc2943f17a6e8b22873b13f3a661}{\index{Generics.\-h@{Generics.\-h}!map\-With\-Selector@{map\-With\-Selector}}
+\index{map\-With\-Selector@{map\-With\-Selector}!Generics.h@{Generics.\-h}}
+\subsubsection[{map\-With\-Selector}]{\setlength{\rightskip}{0pt plus 5cm}N\-S\-Array$\ast$ {\bf map\-With\-Selector} (
+\begin{DoxyParamCaption}
+\item[{S\-E\-L}]{selector, }
+\item[{N\-S\-Array $\ast$}]{preimage}
+\end{DoxyParamCaption}
+)}}\label{_generics_8h_a41dfdc2943f17a6e8b22873b13f3a661}
+
+
+A generic-\/ish map function. 
+
+map\-With\-Selector does the same thing as map, but with an Objective-\/\-C selector (to be used by the runtime) in place of a function. 
+\begin{DoxyParams}{Parameters}
+{\em selector} & the functional argument as a selector. \\
+\hline
+{\em preimage} & the preimage as an N\-S\-Array$\ast$. \\
+\hline
+\end{DoxyParams}
+\hypertarget{_generics_8h_af1b2a3f7da1e25e04756396d4ffdc3d9}{\index{Generics.\-h@{Generics.\-h}!unzip@{unzip}}
+\index{unzip@{unzip}!Generics.h@{Generics.\-h}}
+\subsubsection[{unzip}]{\setlength{\rightskip}{0pt plus 5cm}N\-S\-Array$\ast$ {\bf unzip} (
+\begin{DoxyParamCaption}
+\item[{N\-S\-Array $\ast$}]{pairs}
+\end{DoxyParamCaption}
+)}}\label{_generics_8h_af1b2a3f7da1e25e04756396d4ffdc3d9}
+
+
+A generic unzip function. 
+
+\begin{DoxyVerb}   unzip takes a list of pairs and returns a pair of lists.
+   In Haskell:
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}
+        unzip            :: [(a,b)] -> ([a],[b])
+        unzip            =  foldr (\(a,b) ~(as,bs) -> (a:as,b:bs)) ([],[])
+\end{DoxyCode}
+ 
+\begin{DoxyParams}{Parameters}
+{\em pairs} & the list of pairs (N\-S\-Array$\ast$ instances with length-\/2 N\-S\-Array$\ast$ instances as objects). \\
+\hline
+\end{DoxyParams}
+\hypertarget{_generics_8h_a90be7fdd6620a330bca7da0a6100a811}{\index{Generics.\-h@{Generics.\-h}!zip@{zip}}
+\index{zip@{zip}!Generics.h@{Generics.\-h}}
+\subsubsection[{zip}]{\setlength{\rightskip}{0pt plus 5cm}N\-S\-Array$\ast$ {\bf zip} (
+\begin{DoxyParamCaption}
+\item[{N\-S\-Array $\ast$}]{lhs\-List, }
+\item[{N\-S\-Array $\ast$}]{rhs\-List}
+\end{DoxyParamCaption}
+)}}\label{_generics_8h_a90be7fdd6620a330bca7da0a6100a811}
+
+
+A generic zip function. 
+
+\begin{DoxyVerb}   zip takes, as arguments, two lists (NSArray* instances).
+   It returns a list of the pairs where the first element in each pair comes from the first list and the second element in each pair comes from the second list.
+   NSArrays of length 2 are used for pairs (Objective-C doesn't have tuples, and NSArray* works for all tuple types).
+
+   In Haskell:
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}
+        zip              :: [a] -> [b] -> [(a,b)]
+        zip              =  zipWith (,)
+\end{DoxyCode}
+ 
+\begin{DoxyParams}{Parameters}
+{\em lhs\-List} & the list of values to be used as first elements in the pairs in the result. \\
+\hline
+{\em rhs\-List} & the list of values to be used as second elements in the pairs in the result. \\
+\hline
+\end{DoxyParams}
+\hypertarget{_generics_8h_ae7127ae29c830f646bc9ea3863776fa6}{\index{Generics.\-h@{Generics.\-h}!zip\-With@{zip\-With}}
+\index{zip\-With@{zip\-With}!Generics.h@{Generics.\-h}}
+\subsubsection[{zip\-With}]{\setlength{\rightskip}{0pt plus 5cm}N\-S\-Array$\ast$ {\bf zip\-With} (
+\begin{DoxyParamCaption}
+\item[{id($^\wedge$)(id lhs, id rhs)}]{zipper, }
+\item[{N\-S\-Array $\ast$}]{lhs\-List, }
+\item[{N\-S\-Array $\ast$}]{rhs\-List}
+\end{DoxyParamCaption}
+)}}\label{_generics_8h_ae7127ae29c830f646bc9ea3863776fa6}
+
+
+A generic zip\-With function. 
+
+\begin{DoxyVerb}   zipWith takes, as arguments, a zipper function (variably typed function of two arguments of variable type using blocks), and two lists (NSArray* instances).
+   It returns a list of the results of applying the zipper function to each pair of elements with equal index in each list.
+
+   In Haskell:
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}
+        zipWith          :: (a->b->c) -> [a]->[b]->[c]
+        zipWith z (a:as) (b:bs)
+                                         =  z a b : zipWith z as bs
+        zipWith _ _ _    =  []
+\end{DoxyCode}
+ 
+\begin{DoxyParams}{Parameters}
+{\em zipper} & the zipper function as a variably typed function of two arguments of variable type using blocks. \\
+\hline
+{\em lhs\-List} & the list of values to be used as the lhs argument when forming the result. \\
+\hline
+{\em rhs\-List} & the list of values to be used as the rhs argument when forming the result. \\
+\hline
+\end{DoxyParams}
