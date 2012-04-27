@@ -27,15 +27,101 @@
 +(id)foldl1WithBlock:(id(^)(id lhs, id rhs))block overArray:(NSArray*)array;	//!<	This is foldl1.
 +(id)foldr1WithBlock:(id(^)(id lhs, id rhs))block overArray:(NSArray*)array;	//!<	This is foldr1.
 
-//
+//!	reorder
+/*!
+	These methods do not directly sort a list using a comparator to project.
+	Instead, they construct a dictionary whose keys are the image of the list under a projection function and whose values are list of objects from the original list with the same projection.
+	Then they sort the keys using a comparator ON THE PROJECTIONS (which can assume that the inputs are not equal).
+	Then they map to get a list of lists.
+	Then they flatten the list of lists to get the result.
+	A sorting function is used once on a list which is possibly smaller than the original list.
+*/
 -(NSArray*)arrayByReorderingWithProjectionBlock:(id(^)(id))projectionBlock comparisonSelector:(SEL)comparisonSelector;
+
+//!	reorder
+/*!
+	These methods do not directly sort a list using a comparator to project.
+	Instead, they construct a dictionary whose keys are the image of the list under a projection function and whose values are list of objects from the original list with the same projection.
+	Then they sort the keys using a comparator ON THE PROJECTIONS (which can assume that the inputs are not equal).
+	Then they map to get a list of lists.
+	Then they flatten the list of lists to get the result.
+	A sorting function is used once on a list which is possibly smaller than the original list.
+*/
 -(NSArray*)arrayByReorderingWithProjectionBlock:(id(^)(id))projectionBlock comparisonBlock:(NSComparisonResult(^)(id, id))comparisonBlock;
+
+//!	reorder
+/*!
+	These methods do not directly sort a list using a comparator to project.
+	Instead, they construct a dictionary whose keys are the image of the list under a projection function and whose values are list of objects from the original list with the same projection.
+	Then they sort the keys using a comparator ON THE PROJECTIONS (which can assume that the inputs are not equal).
+	Then they map to get a list of lists.
+	Then they flatten the list of lists to get the result.
+	A sorting function is used once on a list which is possibly smaller than the original list.
+*/
 -(NSArray*)arrayByReorderingWithProjectionSelector:(SEL)projectionSelector comparisonSelector:(SEL)comparisonSelector;
+
+//!	reorder
+/*!
+	These methods do not directly sort a list using a comparator to project.
+	Instead, they construct a dictionary whose keys are the image of the list under a projection function and whose values are list of objects from the original list with the same projection.
+	Then they sort the keys using a comparator ON THE PROJECTIONS (which can assume that the inputs are not equal).
+	Then they map to get a list of lists.
+	Then they flatten the list of lists to get the result.
+	A sorting function is used once on a list which is possibly smaller than the original list.
+*/
 -(NSArray*)arrayByReorderingWithProjectionSelector:(SEL)projectionSelector comparisonBlock:(NSComparisonResult(^)(id, id))comparisonBlock;
 
+//!	reorder
+/*!
+	These methods do not directly sort a list using a comparator to project.
+	Instead, they construct a dictionary whose keys are the image of the list under a projection function and whose values are list of objects from the original list with the same projection.
+	Then they sort the keys using a comparator ON THE PROJECTIONS (which can assume that the inputs are not equal).
+	Then they map to get a list of lists.
+	Then they flatten the list of lists to get the result.
+	A sorting function is used once on a list which is possibly smaller than the original list.
+*/
 -(NSArray*)arrayByReorderingInReverseWithProjectionBlock:(id(^)(id))projectionBlock comparisonSelector:(SEL)comparisonSelector;
+
+//!	reorder
+/*!
+	These methods do not directly sort a list using a comparator to project.
+	Instead, they construct a dictionary whose keys are the image of the list under a projection function and whose values are list of objects from the original list with the same projection.
+	Then they sort the keys using a comparator ON THE PROJECTIONS (which can assume that the inputs are not equal).
+	Then they map to get a list of lists.
+	Then they flatten the list of lists to get the result.
+	A sorting function is used once on a list which is possibly smaller than the original list.
+*/
 -(NSArray*)arrayByReorderingInReverseWithProjectionBlock:(id(^)(id))projectionBlock comparisonBlock:(NSComparisonResult(^)(id, id))comparisonBlock;
+//!	reorder
+/*!
+	These methods do not directly sort a list using a comparator to project.
+	Instead, they construct a dictionary whose keys are the image of the list under a projection function and whose values are list of objects from the original list with the same projection.
+	Then they sort the keys using a comparator ON THE PROJECTIONS (which can assume that the inputs are not equal).
+	Then they map to get a list of lists.
+	Then they flatten the list of lists to get the result.
+	A sorting function is used once on a list which is possibly smaller than the original list.
+*/
+
+//!	reorder
+/*!
+	These methods do not directly sort a list using a comparator to project.
+	Instead, they construct a dictionary whose keys are the image of the list under a projection function and whose values are list of objects from the original list with the same projection.
+	Then they sort the keys using a comparator ON THE PROJECTIONS (which can assume that the inputs are not equal).
+	Then they map to get a list of lists.
+	Then they flatten the list of lists to get the result.
+	A sorting function is used once on a list which is possibly smaller than the original list.
+*/
 -(NSArray*)arrayByReorderingInReverseWithProjectionSelector:(SEL)projectionSelector comparisonSelector:(SEL)comparisonSelector;
+
+//!	reorder
+/*!
+	These methods do not directly sort a list using a comparator to project.
+	Instead, they construct a dictionary whose keys are the image of the list under a projection function and whose values are list of objects from the original list with the same projection.
+	Then they sort the keys using a comparator ON THE PROJECTIONS (which can assume that the inputs are not equal).
+	Then they map to get a list of lists.
+	Then they flatten the list of lists to get the result.
+	A sorting function is used once on a list which is possibly smaller than the original list.
+*/
 -(NSArray*)arrayByReorderingInReverseWithProjectionSelector:(SEL)projectionSelector comparisonBlock:(NSComparisonResult(^)(id, id))comparisonBlock;
 
 

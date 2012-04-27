@@ -40,6 +40,22 @@ NSArray* map(id(^function)(id x), NSArray* preimage);
 */
 NSArray* mapWithSelector(SEL selector, NSArray* preimage);
 
+//!	Matrix multiplication from the left using a row vector of functions, using cons instead of plus and function application as multiplication.
+/*!
+	mapTuples takes an n-tuple of functions (NSArray*) and a list of n-tuples (NSArray*) and performs matrix multiplication treating the functions tuple as a row vector
+	
+	\param	functionsTuple	the n-tuple of functions as an NSArray* of blocks.
+	\param	tuples	the list of n-tuple arguments to the functions as an NSArray* of NSArray*s.
+*/
+NSArray* mapTuples(NSArray* functionsTuple, NSArray* tuples);
+
+//!	Same as mapTuples but using a C array of selectors instead of an NSArray of blocks.
+/*!
+	\param	selectorsTuple	the n-tuple of functions as a C array of selectors.
+	\param	tuples	the list of n-tuple arguments to the functions as an NSArray* of NSArray*s.
+*/
+NSArray* mapTuplesWithSelector(SEL* selectorsTuple, NSArray* tuples);
+
 //!	A generic filter function.
 /*!
 	filter takes a predicate (bool typed function of a single argument of variable type using blocks) and a list (NSArray*).
@@ -55,19 +71,6 @@ NSArray* mapWithSelector(SEL selector, NSArray* preimage);
 	\param	predicate	the predicate as a bool typed function of a single argument of variable type using blocks.
 	\param	feed	the feed as an NSArray*.
 */
-
-//!	Document this!
-/*!
-
-*/
-NSArray* mapTuples(NSArray* functionsTuple, NSArray* tuples);
-
-//!	Document this!
-/*!
-
-*/
-NSArray* mapTuplesWithSelector(SEL* selectorsTuple, NSArray* tuples);
-
 NSArray* filter(bool(^predicate)(id x), NSArray* feed);
 
 //!	A generic foldl function.
@@ -188,10 +191,12 @@ NSArray* unzip(NSArray* pairs);
 
 //!	A generic flatten function.
 /*!
-	flatten takes a list of lists and removes the inner square brackets.  This would be the associativity of multiplication for monoids.
+	flatten takes a list of lists (of lists...) and removes the (outermost layer of) inner square brackets.
 */
 NSArray* flatten(NSArray* arrays);
 
+//!	A function which takes an array of objects and returns a dictionary whose keys are the results of applying projectionBlock to the objects in the array and whose objects are the lists of objects from the original array with the same projection, in the order in which they came from the original array.
 NSDictionary* inverseImageArraysByProjectionWithBlock(NSArray* array, id(^projectionBlock)(id));
 
+//!	A function which takes an array of objects and returns a dictionary whose keys are the results of sending projectionSelector to the objects in the array and whose objects are the lists of objects from the original array with the same projection, in the order in which they came from the original array.
 NSDictionary* inverseImageArraysByProjectionWithSelector(NSArray* array, SEL projectionSelector);
