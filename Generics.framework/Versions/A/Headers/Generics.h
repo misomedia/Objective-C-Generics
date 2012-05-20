@@ -200,3 +200,6 @@ NSDictionary* inverseImageArraysByProjectionWithBlock(NSArray* array, id(^projec
 
 //!	A function which takes an array of objects and returns a dictionary whose keys are the results of sending projectionSelector to the objects in the array and whose objects are the lists of objects from the original array with the same projection, in the order in which they came from the original array.
 NSDictionary* inverseImageArraysByProjectionWithSelector(NSArray* array, SEL projectionSelector);
+
+//!	A function which merges two dictionary, merging the subdictionaries any time two keys collide (or returning nil if the colliding objects are not dictionaries or themselves collide).
+NSDictionary* mergeDictionaries(NSDictionary* dictionary0, NSDictionary* dictionary1);
