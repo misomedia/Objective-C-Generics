@@ -14,9 +14,15 @@
 */
 
 //!	A function for mapping over the keys and the objects in a dictionary using blocks.
+/*!
+	return nil if shit fucks up.
+*/
 NSDictionary* transformMappingWithBlocks(id(^keyBlock)(id key), id(^objectBlock)(id object), NSDictionary* mapping);
 
 //!	A function for mapping over the keys and the objects in a dictionary using blocks
+/*!
+	return nil if shit fucks up.
+*/
 NSDictionary* transformMappingWithSelectors(SEL keySelector, SEL objectSelector, NSDictionary* mapping);
 
 //!	A category for treating a NSDictionary as a morphism.

@@ -10,6 +10,7 @@
 #import <Generics/NSArray+Generics.h>
 #import <Generics/NSDictionary+Generics.h>
 #import <Generics/NSDictionary+Morphism.h>
+#import <Generics/Generics+Unsafe.h>
 
 //!	\file Generics.h has Haskelly goodness for all!  All code examples come from Haskell's Prelude module.
 
@@ -37,6 +38,7 @@ NSArray* map(id(^function)(id x), NSArray* preimage);
 	mapWithSelector does the same thing as map, but with an Objective-C selector (to be used by the runtime) in place of a function.
 	\param	selector	the functional argument as a selector.
 	\param	preimage	the preimage as an NSArray*.
+	If the function returns nil when applied to any element of the preimage, the whole thing will be nil.  Arrays do not like nil values, and we'd like to have a map which preserves length or blows up.  No in between...
 */
 NSArray* mapWithSelector(SEL selector, NSArray* preimage);
 
@@ -46,6 +48,7 @@ NSArray* mapWithSelector(SEL selector, NSArray* preimage);
 	
 	\param	functionsTuple	the n-tuple of functions as an NSArray* of blocks.
 	\param	tuples	the list of n-tuple arguments to the functions as an NSArray* of NSArray*s.
+	If the selector returns nil when applied to any element of the preimage, the whole thing will be nil.  Arrays do not like nil values, and we'd like to have a map which preserves length or blows up.  No in between...
 */
 NSArray* mapTuples(NSArray* functionsTuple, NSArray* tuples);
 
@@ -186,6 +189,7 @@ NSArray* zipWith(id(^zipper)(id lhs, id rhs), NSArray* lhsList, NSArray* rhsList
 	unzip            =  foldr (\(a,b) ~(as,bs) -> (a:as,b:bs)) ([],[])
 	\endcode
 	\param	pairs	the list of pairs (NSArray* instances with length-2 NSArray* instances as objects).
+	If the zipper function returns nil for any of its input pairs, the whole thing blows up and returns nil.
 */
 NSArray* unzip(NSArray* pairs);
 
@@ -196,9 +200,15 @@ NSArray* unzip(NSArray* pairs);
 NSArray* flatten(NSArray* arrays);
 
 //!	A function which takes an array of objects and returns a dictionary whose keys are the results of applying projectionBlock to the objects in the array and whose objects are the lists of objects from the original array with the same projection, in the order in which they came from the original array.
+/*!
+	If the projection block returns nil, the whole thing is nil.
+*/
 NSDictionary* inverseImageArraysByProjectionWithBlock(NSArray* array, id(^projectionBlock)(id));
 
 //!	A function which takes an array of objects and returns a dictionary whose keys are the results of sending projectionSelector to the objects in the array and whose objects are the lists of objects from the original array with the same projection, in the order in which they came from the original array.
+/*!
+	If the projection selector returns nil, the whole thing is nil.
+*/
 NSDictionary* inverseImageArraysByProjectionWithSelector(NSArray* array, SEL projectionSelector);
 
 //!	A function which merges two dictionary, merging the subdictionaries any time two keys collide (or returning nil if the colliding objects are not dictionaries or themselves collide).
