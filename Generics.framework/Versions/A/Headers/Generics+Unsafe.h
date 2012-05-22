@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Miso Media. All rights reserved.
 //
 
-#import <Generics/Generics.h>
+#import <Foundation/Foundation.h>
 
 //!	An unsafe (faster) version of map.
 /*!	This will crash if the function returns nil for any element of the preimage.	*/
