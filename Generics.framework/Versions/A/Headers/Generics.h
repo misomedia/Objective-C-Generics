@@ -59,6 +59,9 @@ NSArray* mapTuples(NSArray* functionsTuple, NSArray* tuples);
 */
 NSArray* mapTuplesWithSelector(SEL* selectorsTuple, NSArray* tuples);
 
+//!	A generic variation of map which takes nested dictionaries and applies a function to each object which is not a dictionary, applying itself to every object which is a dictionary, and returns the results in a dictionary with the original keys.
+NSDictionary* mapThroughNestedDictionaries(id(^function)(id x), NSDictionary* preimage);
+
 //!	A generic filter function.
 /*!
 	filter takes a predicate (bool typed function of a single argument of variable type using blocks) and a list (NSArray*).
