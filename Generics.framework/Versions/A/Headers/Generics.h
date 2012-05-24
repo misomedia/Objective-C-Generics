@@ -11,6 +11,7 @@
 #import <Generics/NSDictionary+Generics.h>
 #import <Generics/NSDictionary+Morphism.h>
 #import <Generics/Generics+Unsafe.h>
+#import <Generics/Generics+Concurrency.h>
 
 //!	\file Generics.h has Haskelly goodness for all!  All code examples come from Haskell's Prelude module.
 

@@ -25,6 +25,8 @@ NSDictionary* transformMappingWithBlocks(id(^keyBlock)(id key), id(^objectBlock)
 */
 NSDictionary* transformMappingWithSelectors(SEL keySelector, SEL objectSelector, NSDictionary* mapping);
 
+//TODO: rename these as unsafe, do safe versions.
+
 //!	A category for treating a NSDictionary as a morphism.
 @interface NSDictionary(Morphism)
 
