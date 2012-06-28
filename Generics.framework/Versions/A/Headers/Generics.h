@@ -150,6 +150,36 @@ id foldl1(id(^function)(id lhs, id rhs), NSArray* nonemptyList);
 */
 id foldr1(id(^function)(id lhs, id rhs), NSArray* nonemptyList);
 
+//!	A generic maximum function.
+/*!
+	maximum takes, as arguments, a nonempty list and a lessThan block.  It returns the greatest item in the list.
+	
+	In Haskell:
+	\code
+	maximum :: (Ord a) => [a] -> a
+	maximum []       =  error "Prelude.maximum: empty list"
+	maximum xs       =  foldl1 max xs
+	\endcode
+	\param	lessThanFunction	a function (as a block) used to compare items in the list.
+	\param	nonemptyList	the nonempty list as an NSArray*.
+*/
+id maximum(NSComparisonResult(^lessThanFunction)(id lhs, id rhs), NSArray* nonemptyList);
+
+//!	A generic minimum function.
+/*!
+	minimum takes, as arguments, a nonempty list and a lessThan block.  It returns the least item in the list.
+	
+	In Haskell:
+	\code
+	minimum :: (Ord a) => [a] -> a
+	minimum []       =  error "Prelude.minimum: empty list"
+	minimum xs       =  foldl1 min xs
+	\endcode
+	\param	lessThanFunction	a function (as a block) used to compare items in the list.
+	\param	nonemptyList	the nonempty list as an NSArray*.
+*/
+id minimum(NSComparisonResult(^lessThanFunction)(id lhs, id rhs), NSArray* nonemptyList);
+
 //!	A generic zip function
 /*!
 	zip takes, as arguments, two lists (NSArray* instances).
