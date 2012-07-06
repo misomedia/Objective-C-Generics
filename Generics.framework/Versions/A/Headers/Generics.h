@@ -248,5 +248,8 @@ NSDictionary* inverseImageArraysByProjectionWithSelector(NSArray* array, SEL pro
 //!	A function which merges two dictionary, merging the subdictionaries any time two keys collide (or returning nil if the colliding objects are not dictionaries or themselves collide).
 NSDictionary* mergeDictionaries(NSDictionary* dictionary0, NSDictionary* dictionary1);
 
-//!	An ad-hoc polymorphic function which takes two arrays and appends them or takes two dictionaries and merges them (returning nil if collisions blah blah blah).
+//!	An ad-hoc polymorphic function which takes two arrays and concatenates them or takes two dictionaries and merges them (returning nil if collisions blah blah blah).
 id mergeDictionariesAppendArrays(id lhs, id rhs);
+
+//!	An ad-hoc polymorphic function which takes two two sets and (disjoint) unites them or takes two arrays and concatenates or takes two dictionaries and merges them (returning nil if blablabla).
+id mergeDictionariesAppendArraysUniteSets(id lhs, id rhs);
