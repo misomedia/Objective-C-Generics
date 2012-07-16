@@ -15,6 +15,30 @@
 
 //!	\file Generics.h has Haskelly goodness for all!  All code examples come from Haskell's Prelude module.
 
+//!	Returns the head object (first object).
+/*!
+	headObject takes an array and returns the first argument, returning nil if the array is empty or nil.
+*/
+id headObject(NSArray* array);
+
+//!	Returns the tail objects.
+/*!
+	tailObjects takes an array and returns everything after the first argument, returning nil if the array is empty or nil and returning an empty array if the array is of length one.
+*/
+NSArray* tailObjects(NSArray* array);
+
+//!	Returns the initial objects.
+/*!
+	initObjects takes an array and returns everything except for the last object, returning nil if the array is empty or nil and returning an empty array if the array is of length one. 
+*/
+NSArray* initObjects(NSArray* array);
+
+//!	Returns the last object.
+/*!
+	lastObject takes an array and returns the last object.
+*/
+id lastObject(NSArray* array);
+
 //!	id function.
 id(^id_function)(id);
 

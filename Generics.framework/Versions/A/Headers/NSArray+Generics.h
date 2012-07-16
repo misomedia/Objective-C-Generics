@@ -124,6 +124,11 @@
 */
 -(NSArray*)arrayByReorderingInReverseWithProjectionSelector:(SEL)projectionSelector comparisonBlock:(NSComparisonResult(^)(id, id))comparisonBlock;
 
+//array
+-(id)headObject;	//!<	This is headObject for arrays.
+-(NSArray*)tailObjects;	//!<	This is tailObjects for arrays.
+-(NSArray*)initObjects;	//!<	This is initObjects (not the Objective-C init) for arrays.
+//last object already exists lol.
 
 //map
 -(NSArray*)imageUnderBlock:(id(^)(id x))block;		//!<	This is per-instance map, but due to retarded Objective-C naming conventions, it is named thus.
