@@ -130,6 +130,8 @@
 -(NSArray*)initObjects;	//!<	This is initObjects (not the Objective-C init) for arrays.
 //last object already exists lol.
 
+-(NSArray*)reverseObjects;	//!<	This is reverseObjects for arrays.
+
 //map
 -(NSArray*)imageUnderBlock:(id(^)(id x))block;		//!<	This is per-instance map, but due to retarded Objective-C naming conventions, it is named thus.
 -(NSArray*)imageUnderSelector:(SEL)selector;	//!<	This is also per-instance map, but using an Objective-C selector instead of a block.

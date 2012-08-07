@@ -39,6 +39,9 @@ NSArray* initObjects(NSArray* array);
 */
 id lastObject(NSArray* array);
 
+//!	Returns an array containing the objects in the given array in reverse.
+NSArray* reverseObjects(NSArray* array);
+
 //!	id function.
 id(^id_function)(id);
 
