@@ -207,6 +207,20 @@ id maximum(NSComparisonResult(^lessThanFunction)(id lhs, id rhs), NSArray* nonem
 */
 id minimum(NSComparisonResult(^lessThanFunction)(id lhs, id rhs), NSArray* nonemptyList);
 
+/*!
+	Returns false iff the result of applying block to each object in preimage is false.
+	Computes the result in a short-circuit manner in the order in which the objects appear in the preimage.
+	Informally, this is block(preimage_0) || block(preimage_1) || ... with the usual short circuiting.
+*/
+bool disjoinImageUnderBooleanBlock(bool(^booleanBlock)(id), NSArray* preimage);
+
+/*!
+	Returns true iff the result of applying block to each object in preimage is true.
+	Computes the result in a short-circuit manner in the order in which the objects appear in the preimage.
+	Informally, this is block(preimage_0) && block(preimage_1) && ... with the usual short circuiting.
+*/
+bool conjoinImageUnderBooleanBlock(bool(^booleanBlock)(id), NSArray* preimage);
+
 //!	A generic zip function
 /*!
 	zip takes, as arguments, two lists (NSArray* instances).
