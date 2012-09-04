@@ -294,3 +294,5 @@ id mergeDictionariesAppendArrays(id lhs, id rhs);
 
 //!	An ad-hoc polymorphic function which takes two two sets and (disjoint) unites them or takes two arrays and concatenates or takes two dictionaries and merges them (returning nil if blablabla).
 id mergeDictionariesAppendArraysUniteSets(id lhs, id rhs);
+
+id mergeJSON(id lhs, id rhs);
