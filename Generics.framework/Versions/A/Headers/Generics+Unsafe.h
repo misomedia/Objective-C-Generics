@@ -6,14 +6,14 @@
 //  Copyright (c) 2012 Miso Media. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <Generics/Generics.h>
 
-//!	An unsafe (faster) version of map.
-/*!	This will crash if the function returns nil for any element of the preimage.	*/
-NSArray*	unsafeMap(id(^function)(id), NSArray* preimage);
-
-//!	An unsafe version of mapWithSelector.
-/*!	This will crash if the function returns nil for any element of the preimage.	*/
-NSArray*	unsafeMapWithSelector(SEL selector, NSArray* preimage);
-
-
+////!	An unsafe (faster) version of map.
+///*!	This will crash if the function returns nil for any element of the preimage.	*/
+//NSArray*	unsafeMap(id(^function)(id), NSArray* preimage);
+//
+////!	An unsafe version of mapWithSelector.
+///*!	This will crash if the function returns nil for any element of the preimage.	*/
+//NSArray*	unsafeMapWithSelector(SEL selector, NSArray* preimage);
+//
+//

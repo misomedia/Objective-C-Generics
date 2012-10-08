@@ -7,11 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <Generics/NSArray+Generics.h>
-#import <Generics/NSDictionary+Generics.h>
-#import <Generics/NSDictionary+Morphism.h>
-#import <Generics/Generics+Unsafe.h>
-#import <Generics/Generics+Concurrency.h>
+//#import <Generics/NSArray+Generics.h>
+//#import <Generics/NSDictionary+Generics.h>
+//#import <Generics/NSDictionary+Morphism.h>
+//#import <Generics/Generics+Unsafe.h>
+//#import <Generics/Generics+Concurrency.h>
 
 //!	\file Generics.h has Haskelly goodness for all!  All code examples come from Haskell's Prelude module.
 
@@ -296,3 +296,202 @@ id mergeDictionariesAppendArrays(id lhs, id rhs);
 id mergeDictionariesAppendArraysUniteSets(id lhs, id rhs);
 
 id mergeJSON(id lhs, id rhs);
+
+#pragma mark	--Concurrency--
+
+//!	Assuming referential transparency of the input function, does the same thing as map, but does it concurrently.
+NSArray* concurrentMap(id(^function)(id x), NSArray* preimage);
+
+NSArray* concurrentMapWithSelector(SEL selector, NSArray* preimage);
+
+#pragma mark	--Unsafe--
+
+//!	An unsafe (faster) version of map.
+/*!	This will crash if the function returns nil for any element of the preimage.	*/
+NSArray*	unsafeMap(id(^function)(id), NSArray* preimage);
+
+//!	An unsafe version of mapWithSelector.
+/*!	This will crash if the function returns nil for any element of the preimage.	*/
+NSArray*	unsafeMapWithSelector(SEL selector, NSArray* preimage);
+
+#pragma mark	--NSArray(Generics)--
+
+/*!	\category NSArray(Generics)
+	\abstract A category on NSArray to provide Haskelly functional programming functionality with respect to (parametrically polymorphic or very lucky) arrays.
+	Ad hoc polymorphism will behave in an ad hoc manner.
+*/
+@interface NSArray(Generics)
+
+//map
++(NSArray*)mapBlock:(id(^)(id x))block overArray:(NSArray*)array;	//!<	This is map for blocks.
++(NSArray*)mapSelector:(SEL)selector overArray:(NSArray*)array;	//!<	This is map for selectors.
+
+//filter
++(NSArray*)filterBlock:(bool(^)(id x))block overArray:(NSArray*)array;	//!<	This is filter.
+
+//fold
++(id)foldlWithBlock:(id(^)(id lhs, id rhs))block zero:(id)zero overArray:(NSArray*)array;	//!<	This is foldl.
++(id)foldrWithBlock:(id(^)(id lhs, id rhs))block zero:(id)zero overArray:(NSArray*)array;	//!<	This is foldr.
++(id)foldl1WithBlock:(id(^)(id lhs, id rhs))block overArray:(NSArray*)array;	//!<	This is foldl1.
++(id)foldr1WithBlock:(id(^)(id lhs, id rhs))block overArray:(NSArray*)array;	//!<	This is foldr1.
+
+//!	reorder
+/*!
+	These methods do not directly sort a list using a comparator to project.
+	Instead, they construct a dictionary whose keys are the image of the list under a projection function and whose values are list of objects from the original list with the same projection.
+	Then they sort the keys using a comparator ON THE PROJECTIONS (which can assume that the inputs are not equal).
+	Then they map to get a list of lists.
+	Then they flatten the list of lists to get the result.
+	A sorting function is used once on a list which is possibly smaller than the original list.
+*/
+-(NSArray*)arrayByReorderingWithProjectionBlock:(id(^)(id))projectionBlock comparisonSelector:(SEL)comparisonSelector;
+
+//!	reorder
+/*!
+	These methods do not directly sort a list using a comparator to project.
+	Instead, they construct a dictionary whose keys are the image of the list under a projection function and whose values are list of objects from the original list with the same projection.
+	Then they sort the keys using a comparator ON THE PROJECTIONS (which can assume that the inputs are not equal).
+	Then they map to get a list of lists.
+	Then they flatten the list of lists to get the result.
+	A sorting function is used once on a list which is possibly smaller than the original list.
+*/
+-(NSArray*)arrayByReorderingWithProjectionBlock:(id(^)(id))projectionBlock comparisonBlock:(NSComparisonResult(^)(id, id))comparisonBlock;
+
+//!	reorder
+/*!
+	These methods do not directly sort a list using a comparator to project.
+	Instead, they construct a dictionary whose keys are the image of the list under a projection function and whose values are list of objects from the original list with the same projection.
+	Then they sort the keys using a comparator ON THE PROJECTIONS (which can assume that the inputs are not equal).
+	Then they map to get a list of lists.
+	Then they flatten the list of lists to get the result.
+	A sorting function is used once on a list which is possibly smaller than the original list.
+*/
+-(NSArray*)arrayByReorderingWithProjectionSelector:(SEL)projectionSelector comparisonSelector:(SEL)comparisonSelector;
+
+//!	reorder
+/*!
+	These methods do not directly sort a list using a comparator to project.
+	Instead, they construct a dictionary whose keys are the image of the list under a projection function and whose values are list of objects from the original list with the same projection.
+	Then they sort the keys using a comparator ON THE PROJECTIONS (which can assume that the inputs are not equal).
+	Then they map to get a list of lists.
+	Then they flatten the list of lists to get the result.
+	A sorting function is used once on a list which is possibly smaller than the original list.
+*/
+-(NSArray*)arrayByReorderingWithProjectionSelector:(SEL)projectionSelector comparisonBlock:(NSComparisonResult(^)(id, id))comparisonBlock;
+
+//!	reorder
+/*!
+	These methods do not directly sort a list using a comparator to project.
+	Instead, they construct a dictionary whose keys are the image of the list under a projection function and whose values are list of objects from the original list with the same projection.
+	Then they sort the keys using a comparator ON THE PROJECTIONS (which can assume that the inputs are not equal).
+	Then they map to get a list of lists.
+	Then they flatten the list of lists to get the result.
+	A sorting function is used once on a list which is possibly smaller than the original list.
+*/
+-(NSArray*)arrayByReorderingInReverseWithProjectionBlock:(id(^)(id))projectionBlock comparisonSelector:(SEL)comparisonSelector;
+
+//!	reorder
+/*!
+	These methods do not directly sort a list using a comparator to project.
+	Instead, they construct a dictionary whose keys are the image of the list under a projection function and whose values are list of objects from the original list with the same projection.
+	Then they sort the keys using a comparator ON THE PROJECTIONS (which can assume that the inputs are not equal).
+	Then they map to get a list of lists.
+	Then they flatten the list of lists to get the result.
+	A sorting function is used once on a list which is possibly smaller than the original list.
+*/
+-(NSArray*)arrayByReorderingInReverseWithProjectionBlock:(id(^)(id))projectionBlock comparisonBlock:(NSComparisonResult(^)(id, id))comparisonBlock;
+//!	reorder
+/*!
+	These methods do not directly sort a list using a comparator to project.
+	Instead, they construct a dictionary whose keys are the image of the list under a projection function and whose values are list of objects from the original list with the same projection.
+	Then they sort the keys using a comparator ON THE PROJECTIONS (which can assume that the inputs are not equal).
+	Then they map to get a list of lists.
+	Then they flatten the list of lists to get the result.
+	A sorting function is used once on a list which is possibly smaller than the original list.
+*/
+
+//!	reorder
+/*!
+	These methods do not directly sort a list using a comparator to project.
+	Instead, they construct a dictionary whose keys are the image of the list under a projection function and whose values are list of objects from the original list with the same projection.
+	Then they sort the keys using a comparator ON THE PROJECTIONS (which can assume that the inputs are not equal).
+	Then they map to get a list of lists.
+	Then they flatten the list of lists to get the result.
+	A sorting function is used once on a list which is possibly smaller than the original list.
+*/
+-(NSArray*)arrayByReorderingInReverseWithProjectionSelector:(SEL)projectionSelector comparisonSelector:(SEL)comparisonSelector;
+
+//!	reorder
+/*!
+	These methods do not directly sort a list using a comparator to project.
+	Instead, they construct a dictionary whose keys are the image of the list under a projection function and whose values are list of objects from the original list with the same projection.
+	Then they sort the keys using a comparator ON THE PROJECTIONS (which can assume that the inputs are not equal).
+	Then they map to get a list of lists.
+	Then they flatten the list of lists to get the result.
+	A sorting function is used once on a list which is possibly smaller than the original list.
+*/
+-(NSArray*)arrayByReorderingInReverseWithProjectionSelector:(SEL)projectionSelector comparisonBlock:(NSComparisonResult(^)(id, id))comparisonBlock;
+
+//array
+-(id)headObject;	//!<	This is headObject for arrays.
+-(NSArray*)tailObjects;	//!<	This is tailObjects for arrays.
+-(NSArray*)initObjects;	//!<	This is initObjects (not the Objective-C init) for arrays.
+//last object already exists lol.
+
+-(NSArray*)reverseObjects;	//!<	This is reverseObjects for arrays.
+
+//map
+-(NSArray*)imageUnderBlock:(id(^)(id x))block;		//!<	This is per-instance map, but due to retarded Objective-C naming conventions, it is named thus.
+-(NSArray*)imageUnderSelector:(SEL)selector;	//!<	This is also per-instance map, but using an Objective-C selector instead of a block.
+
+//filter
+-(NSArray*)filtrateUnderBlock:(bool(^)(id x))block;	//!<	This is per-instance filter.
+
+//fold
+-(id)valueByFoldingLeftWithBlock:(id(^)(id a, id b))block zero:(id)zero;	//!<	This is per-instance foldl
+-(id)valueByFoldingRightWithBlock:(id(^)(id a, id b))block zero:(id)zero;	//!<	This is per-instance foldr.
+-(id)valueByFoldingLeftWithBlock:(id(^)(id a, id b))block;	//!<	This is per-instance foldl1.
+-(id)valueByFoldingRightWithBlock:(id(^)(id a, id b))block;	//!<	This is per-instance foldr1.
+
+@end
+
+#pragma mark	--NSDictionary(Generics)--
+
+//!	A category for generics involving associative arrays (NSDictionary*).
+@interface NSDictionary(Generics)
+
++(NSDictionary*)dictionaryByApplyingBlock:(id(^)(id key))keyBlock toEachKeyAndBlock:(id(^)(id object))objectBlock toEachObjectInDictionary:(NSDictionary*)dictionary;	//!<	given a dictionary, returns a dictionary containing the image of the original keys under keyBlock for keys and the image of the objects under objectBlock for objects.
++(NSDictionary*)dictionaryByApplyingSelector:(SEL)keySelector toEachKeyAndSelector:(SEL)objectSelector toEachObjectInDictionary:(NSDictionary*)dictionary;	//!<	given a dictionary, returns a dictionary containing the image of the original keys under keySelector for keys and the image of the objects under objectSelector for objects.
++(NSDictionary*)dictionaryByMergingDictionary0:(NSDictionary*)dictionary0 withDictionary1:(NSDictionary*)dictionary1;
+
+-(NSDictionary*)resultOfApplyingToEachKeyTheBlock:(id(^)(id key))keyBlock andToEachObjectTheBlock:(id(^)(id object))objectBlock;	//!<	returns a dictionary containing the image of the original keys under keyBlock for keys and the image of the objects under objectBlock for objects.
+-(NSDictionary*)resultOfApplyingToEachKeyTheSelector:(SEL)keySelector andToEachObjectTheSelector:(SEL)objectSelector;	//!<	returns a dictionary containing the image of the original keys under keySelector for keys and the image of the objects under objectSelector for objects.
+
+@end
+
+#pragma mark	--NSDictionary(Morphism)--
+
+//!	\file	A way to treat dictionaries as morphisms between arrays.
+/*!
+	Specifically, given a morphism, we store the domain as the keys and the image of the domain as objects.
+*/
+
+//!	A function for mapping over the keys and the objects in a dictionary using blocks.
+/*!
+	return nil if shit fucks up.
+*/
+NSDictionary* transformMappingWithBlocks(id(^keyBlock)(id key), id(^objectBlock)(id object), NSDictionary* mapping);
+
+//!	A function for mapping over the keys and the objects in a dictionary using blocks
+/*!
+	return nil if shit fucks up.
+*/
+NSDictionary* transformMappingWithSelectors(SEL keySelector, SEL objectSelector, NSDictionary* mapping);
+
+//TODO: rename these as unsafe, do safe versions.
+
+//!	A category for treating a NSDictionary as a morphism.
+@interface NSDictionary(Morphism)
+
+@end
+
